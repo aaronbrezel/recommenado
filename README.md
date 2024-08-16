@@ -16,7 +16,9 @@ We would like you to create an article recommendation API. The goal of this API 
 
 We use the [Tornado web framework](https://www.tornadoweb.org/en/stable/index.html) so we would like you to create a Tornado web app that implements a simple RESTful article recommendation API. 
 
-In this repo, you'll find a starter Python module (tornadoserver.py) and a csv file (articlesembeds.csv) that contains a small article “database”. Please build on the module as much as you’d like, including modifying it and/or creating additional modules. You are welcome and encouraged to use additional libraries as necessary.
+In this repo, you'll find a starter Python module (tornadoserver.py) and a csv file (articlesembeds.csv) that contains a small article “database”. Please build on the module as much as you’d like, including modifying it and/or creating additional modules.
+
+You’ll need the tornado and asyncio libraries and you are welcome and encouraged to use additional libraries as necessary.
 
 The article “database” contains essentially two columns:
 - Article ID
