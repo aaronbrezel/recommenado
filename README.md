@@ -18,7 +18,7 @@ We use the [Tornado web framework](https://www.tornadoweb.org/en/stable/index.ht
 
 In this repo, you'll find a starter Python module (tornadoserver.py) and a csv file (articlesembeds.csv) that contains a small article “database”. Please build on the module as much as you’d like, including modifying it and/or creating additional modules.
 
-You’ll need the tornado and asyncio libraries and you are welcome and encouraged to use additional libraries as necessary.
+You’ll need the `tornado` and `asyncio` libraries and you are welcome and encouraged to use additional libraries as necessary.
 
 The article “database” contains essentially two columns:
 - Article ID
