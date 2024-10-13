@@ -7,7 +7,7 @@ from recommenado.recommend.db import read_db
 # Configure genai with api key https://aistudio.google.com/app/apikey
 # TODO: provide docs on how to securely store key elsewhere
 # TODO: provide docs on how to generate one's own key
-genai.configure(api_key="AIzaSyBwDugFICg01cHibImdh_6tBlOEi1TLwTY")
+genai.configure(api_key="")
 
 # Embed article text using the SAME model that embeddeded original article
 # README links out to example docs (https://ai.google.dev/gemini-api/docs/embeddings) using 
@@ -68,3 +68,5 @@ def cosine_distance(vec1: np.array, vec2: np.array) -> float:
     cosine_distance = 1 - cosine_similarity
 
     return cosine_distance
+
+def embed_text(text: str) -> List[float]:
