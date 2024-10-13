@@ -9,7 +9,7 @@ This package is under active development, so check back often for new features a
 ### Clone repo
 
 ```
-git clone https://github.com/LocalAtBrown/EngAtHomeTask.git
+git clone https://github.com/aaronbrezel/recommenado.git
 ```
 
 ### Python env
