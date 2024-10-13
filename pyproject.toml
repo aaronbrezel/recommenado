@@ -1,9 +1,10 @@
 [project]
 name = "recommenado"
 version = "0.1.0"
-description = "A package for making recommendations"
+description = "A package for making article recommendations"
 authors = [
-    { name = "Your Name", email = "youremail@example.com" }
+    { name = "Aaron Brezel", email = "aaronbrezel@gmail.com" },
+    { name = "Eric Evan Chen", email = "eric.evan.chen@columbia.edu" },
 ]
 license = { text = "MIT" }
 readme = "README.md"

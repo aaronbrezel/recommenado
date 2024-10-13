@@ -10,7 +10,7 @@ Implementation notes:
     * < dependencies
     * > runtime flexibility
     * < failure points
-* Do one thing well (recommend). Let humans do the rest, for now
+* Do one/two thing(s) well (easy startup, recommend). Let humans do the rest, for now
 * Pip installable, Docker image, etc.
 * Forkable from git. Open sourced and encourage PRs
 * Self hosted is preferrable. Perhaps run locally. Removes need for auth flow, scaling, etc. 
@@ -38,7 +38,6 @@ How will you structure responses back to the newsroom?
 
 import asyncio
 import logging
-import json
 
 import tornado
 
@@ -53,6 +52,7 @@ class MainHandler(tornado.web.RequestHandler):
     """
 
     def get(self):
+        LOG.critical("MainHandler get request")
         self.set_status(200)
         self.write("<p>Welcome to Recommenado, a tool to empower readers to be as fully informed as they'd like to be in areas they're most concerned about.</p>")
         self.write("<p>Navigate to /recommend to get article recommendations via form</p>")
@@ -68,6 +68,7 @@ class RecommendationAPIHandler(tornado.web.RequestHandler):
         search query params, e.g., 
         http://localhost:8888/recommend_api?article_headline=123&article_text=456
         """
+        LOG.critical("RecommendationAPIHandler get request")
         article_headline = self.get_query_argument('article_headline', default=None)
         article_text = self.get_query_argument('article_text', default=None)
 
@@ -84,6 +85,7 @@ class RecommendationAPIHandler(tornado.web.RequestHandler):
         In the future, I'd like to make recommendations accessible via 
         non-browser http post requests, e.g., curl
         """
+        LOG.critical("RecommendationAPIHandler post request")
         self.set_status(200)
         self.write("Not Implemented yet!")
 
@@ -105,8 +107,10 @@ class RecommendationFormHandler(tornado.web.RequestHandler):
                    '<input type="submit" value="Submit">'
                    '</form></body></html>')
     async def post(self):
+        """
+        Recieve HTTPS form data and return article recommendations
+        """
         LOG.critical("RecommendationFormHandler post request")
-        
         # Get article headline and text from request
         article_headline: str = self.get_body_argument('article_headline')
         article_text: str = self.get_body_argument('article_text')

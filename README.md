@@ -28,7 +28,7 @@ Install Recommenado into your newly created virtual environment
 pip install -e .
 ```
 
-*Developer's note: Recommanado's source code is meant to be run locally, tweaked and played with. That's why we encorage you to install it in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html#development-mode-a-k-a-editable-installs). If you want a "production" version of the application, see [Docker start](#docker-start)*
+*Developer's note: Recommanado's source code is meant to be run locally, tweaked and played with. That's why we encorage you to install it in [editable mode](https://setuptools.pypa.io/en/latest/userguide/development_mode.html#development-mode-a-k-a-editable-installs). If you want a "production" version of the application, see [Docker start](#docker-start).*
 
 ### Generate Google GenAI API key
 
@@ -36,11 +36,11 @@ You'll need a [Google GenAI](https://ai.google.dev/gemini-api/docs) API key to h
 
 *Developer's note: this API key is your responsibility. [Keep it secret, keep it safe](https://towardsdatascience.com/how-you-can-and-why-you-should-secure-your-api-keys-e433acc2f22d). Only share it with people you trust. And for the love of all that is holy, do not commit it to a public GitHub repository.*
 
-### Upload
+### Upload articles to database
 
-For now, Recommenado's backend database consists of a single `;`-separated `.csv` file located at [./recommenado/recommend/articlesembeds.csv](./recommenado/recommend/articlesembeds.csv). 
+For now, Recommenado's backend article database consists of a single `;`-separated `.csv` file located at [./recommenado/recommend/articlesembeds.csv](./recommenado/recommend/articlesembeds.csv). 
 
-The file consists of two tabular columns: article title and article embedding.
+The file consists of two tabular columns: article ID and article embedding.
 
 To upload articles to the recommendation database, add rows to the csv. Embeddings can be generated à la carte using the following script:
 
@@ -62,6 +62,8 @@ recommenado
 ```
 
 ### Recommenado!
+
+Your ready to start generating article recommendations. Recommendations are available through the following URLs:
 
 [http://localhost:8888/recommend_api?article_title=hello&article_text=world](http://localhost:8888/recommend_api?article_title=hello&article_text=world)
 
