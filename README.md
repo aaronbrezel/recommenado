@@ -23,7 +23,7 @@ pyenv activate recommenado
 
 ### Install
 
-Install Recommanado into your newly created virtual environment
+Install Recommenado into your newly created virtual environment
 ```
 pip install -e .
 ```
