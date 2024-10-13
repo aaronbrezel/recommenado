@@ -92,7 +92,7 @@ class MainHandler(tornado.web.RequestHandler):
         self.write("Welcome to Recommenado, a tool to empower readers to be as fully informed as they'd like to be in areas they're most concerned about.")
         self.write("Navigate to /recommend to get article recommendations via form")
         self.write("Navigate to /recommend_api to get article recommendations via HTTP request")
-        self.write("Navigate to /upload to add articles to the recommendation database")
+        self.write("Navigate to /upload to add articles to the recommendation database (not implemented yet!)")
 
 class RecommendationAPIHandler(tornado.web.RequestHandler):
     async def get(self):
@@ -102,7 +102,6 @@ class RecommendationAPIHandler(tornado.web.RequestHandler):
         For now, users will upload article title and text in the form of
         search query params, e.g., 
         http://localhost:8888/recommend_api?article_headline=123&article_text=456
-
         """
         article_headline = self.get_query_argument('article_headline', default=None)
         article_text = self.get_query_argument('article_text', default=None)

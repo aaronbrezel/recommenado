@@ -32,10 +32,27 @@ pip install -e .
 
 ### Generate Google GenAI API key
 
-You'll need a [Google GenAI](https://ai.google.dev/gemini-api/docs) API key to help generate recommendations. Use [this link](https://aistudio.google.com/app/apikey) to get your personal API key. 
-Once you have it, navigate over to [./recommenado/recommend/model.py](./recommenado/recommend/model.py) and paste the value into `genai.configure(api_key=<your api key goes here>)`. 
+You'll need a [Google GenAI](https://ai.google.dev/gemini-api/docs) API key to help generate recommendations. Use [this link](https://aistudio.google.com/app/apikey) to get your personal API key. Once you have it, navigate over to [./recommenado/recommend/model.py](./recommenado/recommend/model.py) and paste the value into `genai.configure(api_key="<your api key goes here>")`. 
 
-*Developer's note: this API key is your responsibility. [Keep it secret](https://towardsdatascience.com/how-you-can-and-why-you-should-secure-your-api-keys-e433acc2f22d). Only share it with people you trust. And for the love of all that is holy, do not commit it to a public GitHub repository.*
+*Developer's note: this API key is your responsibility. [Keep it secret, keep it safe](https://towardsdatascience.com/how-you-can-and-why-you-should-secure-your-api-keys-e433acc2f22d). Only share it with people you trust. And for the love of all that is holy, do not commit it to a public GitHub repository.*
+
+### Upload
+
+For now, Recommenado's backend database consists of a single `;`-separated `.csv` file located at [./recommenado/recommend/articlesembeds.csv](./recommenado/recommend/articlesembeds.csv). 
+
+The file consists of two tabular columns: article title and article embedding.
+
+To upload articles to the recommendation database, add rows to the csv. Embeddings can be generated à la carte using the following script:
+
+```Python
+import google.generativeai as genai
+genai.configure(api_key="<your api key goes here>")
+text = '<your article text here>'
+embedding = genai.embed_content(model='models/text-embedding-004', content=text, task_type='models/text-embedding-004')['embedding']
+print(embedding)
+```
+
+*Developer's note: we're working on a smoother article database upload experience that does not require directly editing a `.csv` file.*
 
 ### Run!
 
@@ -44,13 +61,14 @@ Start the recommenado server
 recommenado
 ```
 
-### Upload
-
 ### Recommenado!
 
 [http://localhost:8888/recommend_api?article_title=hello&article_text=world](http://localhost:8888/recommend_api?article_title=hello&article_text=world)
 
-*Developer's note: we're working on supporting recommendation submissions via HTML forms*
+or 
+
+[http://localhost:8888/recommend](http://localhost:8888/recommend)
+
 
 ## Docker start
 

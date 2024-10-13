@@ -6,14 +6,8 @@ from recommenado.recommend.db import read_db
 
 # Configure genai with api key https://aistudio.google.com/app/apikey
 # TODO: provide docs on how to securely store key elsewhere
-# TODO: provide docs on how to generate one's own key
-genai.configure(api_key="")
+genai.configure(api_key="<your api key goes here>")
 
-# Embed article text using the SAME model that embeddeded original article
-# README links out to example docs (https://ai.google.dev/gemini-api/docs/embeddings) using 
-# `models/text-embedding-004`, so I will assume that's the correct model
-# Setting this with "constant" case since we probably won't be storing embeddings from multiple models
-MODEL: str = 'models/text-embedding-004'
 
 def semantic_match(text: str) -> List[int]:
     """
@@ -33,7 +27,7 @@ def semantic_match(text: str) -> List[int]:
     distances = []
 
     # Generate embedding from article input
-    embedding = genai.embed_content(model=MODEL, content=text, task_type='semantic_similarity')['embedding']
+    embedding = embed_text('semantic_similarity', text)
     
     # For each article in the database, calculate semantic distance to input article
     csvfile, articlereader = read_db()
@@ -69,4 +63,13 @@ def cosine_distance(vec1: np.array, vec2: np.array) -> float:
 
     return cosine_distance
 
-def embed_text(text: str) -> List[float]:
+def embed_text(task_type: str, text: str) -> List[float]:
+    """
+    Embed text using Google GenAI's text-embedding-004 model
+    """
+    # Embed article text using the SAME model that embeddeded original article
+    # README links out to example docs (https://ai.google.dev/gemini-api/docs/embeddings) using 
+    # `models/text-embedding-004`, so I will assume that's the correct model
+    model: str = 'models/text-embedding-004'
+    embedding = genai.embed_content(model=model, content=text, task_type=task_type)['embedding']
+    return embedding
