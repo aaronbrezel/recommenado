@@ -89,10 +89,10 @@ class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
         self.set_status(200)
-        self.write("Welcome to Recommenado, a tool to empower readers to be as fully informed as they'd like to be in areas they're most concerned about.")
-        self.write("Navigate to /recommend to get article recommendations via form")
-        self.write("Navigate to /recommend_api to get article recommendations via HTTP request")
-        self.write("Navigate to /upload to add articles to the recommendation database (not implemented yet!)")
+        self.write("<p>Welcome to Recommenado, a tool to empower readers to be as fully informed as they'd like to be in areas they're most concerned about.</p>")
+        self.write("<p>Navigate to /recommend to get article recommendations via form</p>")
+        self.write("<p>Navigate to /recommend_api to get article recommendations via HTTP request</p>")
+        self.write("<p>Navigate to /upload to add articles to the recommendation database (not implemented yet!)</p>")
 
 class RecommendationAPIHandler(tornado.web.RequestHandler):
     async def get(self):
